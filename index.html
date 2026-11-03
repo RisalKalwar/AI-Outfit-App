@@ -38,6 +38,17 @@ input[type=color]{width:56px;height:40px;border:0;background:none;padding:0}
 figure{margin:0}figure img{width:100%;height:300px;object-fit:cover;border-radius:18px;background:var(--card)}figcaption{font-size:13px;color:var(--mu);margin:6px 2px}
 .x2{position:absolute;right:16px;top:14px;border:0;background:var(--bd);color:var(--tx);border-radius:50%;width:34px;height:34px;font-size:19px}
 #t{position:fixed;left:50%;top:calc(12px + env(safe-area-inset-top,0px));transform:translateX(-50%);background:var(--ac);color:var(--acx);padding:9px 16px;border-radius:99px;font-size:14px;opacity:0;transition:opacity .2s;z-index:20;pointer-events:none;max-width:90%}
+.sw{display:flex;justify-content:space-between;align-items:center;background:var(--card);border-radius:16px;padding:12px 16px;margin:12px 0;font-weight:600;font-size:15px}
+.tg{-webkit-appearance:none;appearance:none;width:51px;height:31px;border-radius:99px;background:var(--bd);position:relative;transition:.2s;flex:none;margin:0}
+.tg:checked{background:#34c759}.tg:after{content:"";position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:50%;background:#fff;box-shadow:0 2px 5px #0003;transition:.2s}.tg:checked:after{transform:translateX(20px)}
+.hero .ph img{height:340px}.sm .ph img{height:190px}.sm .ph{border-radius:20px}.sm .pill{font-size:14px;padding:4px 10px;left:8px;bottom:8px}.sm .cap b,.sm .cap span{font-size:13px;line-height:1.3}
+.og{display:grid;grid-template-columns:1fr 1fr;gap:18px 12px}.og .oc{margin:0}
+.hf{position:absolute;right:12px;top:10px;color:#ff375f;font-size:20px;text-shadow:0 1px 6px #0006}
+.empty{text-align:center;color:var(--mu);padding:48px 20px;font-size:15px}.empty b{display:block;color:var(--tx);font-size:18px;margin-bottom:6px}
+.x2.hl{right:58px;color:#ff375f}
+.oc,button{transition:transform .12s}.oc:active,button:active{transform:scale(.97)}
+@keyframes up{from{transform:translateY(36px);opacity:.4}}.sheet .card{animation:up .28s cubic-bezier(.2,.8,.2,1)}
+@media(prefers-reduced-motion:reduce){.sheet .card{animation:none}}
 </style></head><body>
 <main id="m"></main><input id="f" type="file" accept="image/*" multiple hidden><nav id="n"></nav><div id="t"></div>
 <script>
@@ -94,19 +105,27 @@ const $=s=>document.querySelector(s);let tab="out",wsec="shirt",pend=null,det=nu
 const g=id=>S.items.find(i=>i.id==id),I=s=>S.items.filter(i=>i.sec==s),n2=i=>`${meta(i).n} ${LB[i.type]}`;
 const toast=m=>{const t=$("#t");t.textContent=m;t.style.opacity=1;clearTimeout(toast.k);toast.k=setTimeout(()=>t.style.opacity=0,3200)};
 const hasAI=()=>S.pf.key&&(S.pf.prov!="oa"||(S.pf.url&&S.pf.model));
-const num=r=>`<div class=big2 style="color:${r>=8.5?"#1f9d55":r>=7?"#5a9d1f":"#d98a00"}">${r}<small>/10</small></div>`;
 const seg=(L,cur,fn)=>`<div class=seg>${L.map(([k,l])=>`<button class="${cur==k?"on":""}" onclick="${fn}('${k}')">${l}</button>`).join("")}</div>`;
 const occ=()=>seg([["casual","Casual"],["office","Office"],["wedding","Wedding"],["eid","Eid"]],S.occ,"setO");
 const setO=o=>{S.occ=o;save();R()},setW=k=>{wsec=k;R()},setP=k=>{S.pf.prov=k;save();R()};
 function bestJ(s,p){let b=null;I("jacket").forEach(j=>{const v=jr(j,s,p,S.occ);if(v>=6.5&&(!b||v>b.v))b={it:j,v}});return b}
-function outView(){const a=[];I("shirt").forEach(s=>I("pants").forEach(p=>{if(anchor&&anchor!=s.id&&anchor!=p.id)return;const r=rate(s,p,S.occ,S.pf);if(r>=7)a.push({s,p,r})}));a.sort((x,y)=>y.r-x.r);
- let h=`<h1>Outfits</h1><p class=sub>Matches rated 7 and above</p>`+occ()+`<div class=row><button class="chip ${S.jk?"on":""}" onclick="S.jk=!S.jk;save();R()">With jacket</button></div>`;
- if(!I("shirt").length||!I("pants").length)return h+`<p class=mu>Add at least one shirt and one pair of pants in Wardrobe.</p>`;
- h+=`<select onchange="anchor=this.value;R()"><option value="">All my clothes</option>${S.items.filter(i=>i.sec!="jacket").map(i=>`<option value="${i.id}" ${anchor==i.id?"selected":""}>${n2(i)}</option>`).join("")}</select><p></p>`;
- if(!a.length)return h+`<p class=mu>No ${S.occ} outfit reaches 7 yet. Add more clothes or try another occasion.</p>`;
- return h+a.slice(0,12).map(o=>{const j=S.jk?bestJ(o.s,o.p):null;return`<div class=oc onclick="det=[${o.s.id},${o.p.id}];R()"><div class=ph><img src="${o.s.img}"><img src="${o.p.img}">${j?`<img src="${j.it.img}">`:""}<span class=pill>${o.r}</span></div><div class=cap><b>${n2(o.s)}</b><span>with ${n2(o.p)}</span></div></div>`}).join("")}
+const rc=r=>r>=8.5?"#1f9d55":r>=7?"#5a9d1f":r>=5.5?"#d98a00":"#d93c3c";
+const num=r=>`<div class=big2 style="color:${rc(r)}">${r}<small>/10</small></div>`;
+let lastGood=[];const ok=(a,b)=>(S.fav||[]).includes(a+"-"+b);
+const fv=(a,b)=>{const k=a+"-"+b,f=S.fav||[];S.fav=f.includes(k)?f.filter(x=>x!=k):[...f,k];save();R()};
+const surprise=()=>{if(!lastGood.length)return toast("No outfit rated 7+ yet");const o=lastGood[Math.random()*lastGood.length|0];det=[o.s.id,o.p.id];R()};
+const oc=(o,big)=>{const j=S.jk?bestJ(o.s,o.p):null;return`<div class="oc ${big?"hero":"sm"}" onclick="det=[${o.s.id},${o.p.id}];R()"><div class=ph><img src="${o.s.img}"><img src="${o.p.img}">${j?`<img src="${j.it.img}">`:""}<span class=pill style="color:${rc(o.r)}">${o.r}</span>${ok(o.s.id,o.p.id)?`<span class=hf>♥</span>`:""}</div><div class=cap><b>${n2(o.s)}</b><span>with ${n2(o.p)}</span></div></div>`};
+function outView(){const all=[];I("shirt").forEach(s=>I("pants").forEach(p=>{if(anchor&&anchor!=s.id&&anchor!=p.id)return;all.push({s,p,r:rate(s,p,S.occ,S.pf)})}));all.sort((x,y)=>y.r-x.r);
+ const good=all.filter(o=>o.r>=7);lastGood=good;let L=S.low?all:good;if(S.fo)L=L.filter(o=>ok(o.s.id,o.p.id));
+ let h=`<h1>Outfits</h1><p class=sub>${good.length} great ${good.length==1?"match":"matches"}${S.low?`, ${all.length-good.length} below 7`:""}</p>`+occ()+
+ `<div class=row><button class="chip ${S.jk?"on":""}" onclick="S.jk=!S.jk;save();R()">With jacket</button><button class="chip ${S.fo?"on":""}" onclick="S.fo=!S.fo;save();R()">♥ Saved</button><button class=chip onclick="surprise()">Surprise me</button></div>
+ <label class=sw><span>Show outfits below 7</span><input type=checkbox class=tg ${S.low?"checked":""} onchange="S.low=this.checked;save();R()"></label>`;
+ if(!I("shirt").length||!I("pants").length)return h+`<div class=empty><b>Your wardrobe is empty</b>Add at least one shirt and one pair of pants to see outfits.</div>`;
+ h+=`<select onchange="anchor=this.value;R()"><option value="">All my clothes</option>${S.items.filter(i=>i.sec!="jacket").map(i=>`<option value="${i.id}" ${anchor==i.id?"selected":""}>${n2(i)}</option>`).join("")}</select>`;
+ if(!L.length)return h+`<div class=empty><b>Nothing here yet</b>${S.fo?"Tap the heart on an outfit to save it.":"No "+S.occ+" outfit reaches 7. Turn on the switch above to see the rest, or add more clothes."}</div>`;
+ return h+`<h3>${S.fo?"Saved":"Best match"}</h3>`+oc(L[0],1)+(L.length>1?`<h3>More</h3><div class=og>${L.slice(1,25).map(o=>oc(o)).join("")}</div>`:"")}
 function detail(){if(!det)return"";const s=g(det[0]),p=g(det[1]);if(!s||!p)return"";const r=rate(s,p,S.occ,S.pf),j=bestJ(s,p);
- return`<div class=sheet><div class=card style="height:94%"><button class=x2 onclick="det=null;R()">×</button>
+ return`<div class=sheet onclick="if(event.target==this){det=null;R()}"><div class=card style="height:94%"><button class=x2 onclick="det=null;R()">×</button><button class="x2 hl" onclick="fv(${s.id},${p.id})">${ok(s.id,p.id)?"♥":"♡"}</button>
  <div class=two><figure><img src="${s.img}"><figcaption>${n2(s)}</figcaption></figure><figure><img src="${p.img}"><figcaption>${n2(p)}</figcaption></figure></div>
  <h3>Rating</h3>${num(r)}<p class=mu>${tier(r)} for ${S.occ}</p><h3>Shoes</h3>${shoes(meta(p),S.occ)}
  ${j?`<h3>Jacket</h3><figure><img src="${j.it.img}" style="height:240px"><figcaption>${n2(j.it)}, ${j.v}/10</figcaption></figure>`:""}
