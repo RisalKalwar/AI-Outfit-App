@@ -1,0 +1,109 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="FitCheck"><meta name="theme-color" content="#14181f">
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-180.png">
+<title>FitCheck</title>
+<style>
+:root{--bg:#eef1f4;--card:#fff;--tx:#14181f;--mu:#667080;--bd:#d9dee5;--tape:#f2c230;--on:#14181f;--onx:#fff}
+@media(prefers-color-scheme:dark){:root{--bg:#101318;--card:#1a1f27;--tx:#eef1f4;--mu:#97a1b0;--bd:#2b323d;--on:#f2c230;--onx:#14181f}}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.4 "Avenir Next",ui-rounded,system-ui,sans-serif;padding-top:env(safe-area-inset-top,0px)}
+main{padding:14px 14px calc(88px + env(safe-area-inset-bottom,0px));max-width:560px;margin:auto}
+h1{font-size:26px;margin:4px 0 12px;letter-spacing:-.02em}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--bd);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
+nav button{flex:1;border:0;background:none;color:var(--mu);font:inherit;font-size:12px;padding:6px 0}
+nav button.on{color:var(--tx);font-weight:700}nav span{display:block;font-size:20px}
+.row{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:99px;padding:7px 12px;font:inherit;font-size:14px}
+.chip.on{background:var(--on);color:var(--onx);border-color:var(--on)}
+.dot{width:14px;height:14px;border-radius:50%;border:1px solid #8886;display:inline-block}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px;margin:10px 0}
+.pair{display:flex;gap:8px}.pair img,.sw{flex:1;height:92px;min-width:0;object-fit:cover;border-radius:10px;border:1px solid var(--bd)}
+.tape{position:relative;height:30px;border-radius:6px;background:var(--tape);margin:12px 0 4px;overflow:hidden;color:#14181f}
+.tape i{position:absolute;top:0;bottom:0;right:0;background:var(--card);opacity:.88}
+.tape u{position:absolute;bottom:0;width:1px;height:8px;background:#14181f}
+.tape b{position:absolute;left:10px;top:3px;font-size:19px}
+.mu{color:var(--mu);font-size:14px}.shoe{font-size:14px;line-height:1.7;border-top:1px dashed var(--bd);margin-top:8px;padding-top:6px}
+button.pri,button.ghost{font:inherit;border-radius:10px;padding:10px 14px;border:1px solid var(--tx);margin:4px 4px 0 0}
+button.pri{background:var(--on);color:var(--onx);border-color:var(--on);font-weight:700}button.ghost{background:none;color:var(--tx)}
+select,input[type=password],input[type=text]{width:100%;font:inherit;padding:10px;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.grid div{position:relative}.grid img,.grid .sw{width:100%;height:96px}
+.grid small{display:block;font-size:12px;text-align:center}.grid .x{position:absolute;top:4px;right:4px;background:#000a;color:#fff;border:0;border-radius:50%;width:24px;height:24px}
+.sheet{position:fixed;inset:0;background:#000a;display:flex;align-items:flex-end;z-index:9}.sheet .card{width:100%;margin:0;border-radius:18px 18px 0 0;max-height:86%;overflow:auto;padding-bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+.big{width:100%;height:150px;object-fit:cover;border-radius:10px}
+</style></head><body>
+<main id="m"></main><input id="f" type="file" accept="image/*" hidden>
+<nav id="n"></nav>
+<script>
+const P=[["Black","#1a1a1a"],["White","#f5f5f5"],["Grey","#8a8d91"],["Charcoal","#3b3f45"],["Navy","#1f2a4d"],["Blue","#2f5fb3"],["Light Blue","#9cc3ea"],["Beige","#d8c3a5"],["Cream","#efe6d0"],["Brown","#6b4a2f"],["Tan","#b08d57"],["Khaki","#b5a26a"],["Olive","#6b6f2a"],["Green","#2f7a4b"],["Teal","#1f7a7a"],["Maroon","#6e1f2b"],["Red","#c0392b"],["Pink","#e7a1b8"],["Yellow","#e8c547"],["Orange","#e07b2a"],["Purple","#6a3d9a"]];
+const H=h=>[1,3,5].map(i=>parseInt(h.substr(i,2),16));
+function hsl([r,g,b]){r/=255;g/=255;b/=255;const M=Math.max(r,g,b),m=Math.min(r,g,b),l=(M+m)/2,d=M-m;let h=0,s=0;if(d){s=d/(1-Math.abs(2*l-1));h=M==r?((g-b)/d)%6:M==g?(b-r)/d+2:(r-g)/d+4;h=(h*60+360)%360}return{h,s,l}}
+const C={};P.forEach(([n,x])=>C[n]={n,x,...hsl(H(x))});
+const CORE=["Black","White","Grey","Charcoal","Cream","Beige"],EARTH=["Navy","Brown","Tan","Khaki","Olive"];
+const GOOD=[["Navy","Light Blue"],["Navy","White"],["Navy","Beige"],["Navy","Cream"],["Olive","Cream"],["Brown","Light Blue"],["Maroon","Beige"],["Maroon","Grey"],["Pink","Grey"],["Pink","Navy"],["Teal","Beige"],["Khaki","Navy"],["Khaki","White"],["Olive","White"],["Brown","Cream"],["Black","White"],["Blue","Beige"],["Light Blue","Khaki"],["Green","Beige"],["Light Blue","Charcoal"]];
+const BAD=[["Red","Green"],["Brown","Black"],["Orange","Pink"],["Red","Pink"],["Purple","Green"],["Red","Orange"],["Yellow","Pink"],["Blue","Green"],["Purple","Orange"]];
+const pr=(a,b,L)=>L.some(([x,y])=>(x==a&&y==b)||(x==b&&y==a));
+function pair(a,b){a=C[a];b=C[b];let s;
+ if(pr(a.n,b.n,GOOD))s=9;else if(pr(a.n,b.n,BAD))s=3.5;
+ else if(a.n==b.n)s=CORE.includes(a.n)||EARTH.includes(a.n)?6:4;
+ else if(CORE.includes(a.n)||CORE.includes(b.n))s=8;
+ else if(EARTH.includes(a.n)&&EARTH.includes(b.n))s=6;
+ else if(EARTH.includes(a.n)||EARTH.includes(b.n))s=7;
+ else{const d=Math.min(Math.abs(a.h-b.h),360-Math.abs(a.h-b.h));s=d<30?6.5:d>150?6:5;if(a.s>.55&&b.s>.55)s-=1.5}
+ if(Math.abs(a.l-b.l)>.25)s+=.5;else if(a.n!=b.n)s-=.5;return s}
+const SKIN={fair:["Navy","Maroon","Teal","Blue","Purple","Pink"],wheatish:["Olive","Teal","Maroon","Navy","Cream","Blue"],olive:["Cream","Maroon","Teal","Navy","Orange","Green"],dark:["White","Yellow","Light Blue","Cream","Orange","Pink","Red"]};
+const SEAS={summer:n=>C[n].l>.6,winter:n=>C[n].l<.35,autumn:n=>["Olive","Brown","Tan","Khaki","Maroon","Orange","Beige"].includes(n),spring:n=>["Pink","Light Blue","Yellow","Cream","Green","White"].includes(n)};
+function rate(sh,pa,o,pf){let s=pair(sh,pa);const loud=n=>C[n].s>.6&&C[n].l>.3&&C[n].l<.75,has=(L,n)=>L.includes(n);
+ if(o=="office"){if(loud(sh))s-=1.5;if(loud(pa))s-=1.5;if(has(["White","Light Blue","Blue","Cream","Grey","Pink","Beige"],sh))s+=.5;if(has(["Navy","Charcoal","Black","Grey","Khaki","Beige"],pa))s+=.5}
+ if(o=="wedding"){if(has(["White","Cream","Maroon","Navy","Black","Light Blue"],sh))s+=.7;if(has(["Black","Charcoal","Navy","Beige"],pa))s+=.7;if(has(["Yellow","Orange","Olive","Khaki"],sh))s-=1}
+ if(o=="eid"){if(has(["White","Cream","Light Blue","Pink","Beige","Green","Teal"],sh))s+=1;if(C[sh].l<.3&&C[pa].l<.3)s-=.8}
+ if(o=="casual"&&has(["Olive","Khaki","Blue"],pa))s+=.3;
+ if(pf.skin&&SKIN[pf.skin].includes(sh))s+=.5;if(pf.season&&SEAS[pf.season](sh))s+=.5;
+ return Math.max(1,Math.min(10,Math.round(s*10)/10))}
+const tier=r=>r>=8.5?"Great match":r>=7?"Good match":r>=5.5?"Okay":"Clashes";
+const SH={Black:["Black","White or black sneakers","Black slides"],White:["Brown, tan or black","White or beige sneakers","Tan sandals"],Grey:["Black or dark brown","White or grey sneakers","Black or brown sandals"],Navy:["Brown, tan or burgundy","White sneakers","Brown or tan sandals"],Beige:["Brown, tan or navy","White or brown sneakers","Brown sandals"],Brown:["Dark brown or black","White or tan sneakers","Brown sandals"],Olive:["Brown or black","White or brown sneakers","Brown or tan sandals"],Maroon:["Black or dark brown","White or black sneakers","Black sandals"],_:["Black or brown","White sneakers","Black or brown sandals"]};
+const SK={Charcoal:"Grey",Blue:"Navy",Khaki:"Beige",Cream:"Beige",Tan:"Beige",Green:"Olive",Red:"Maroon"};
+const shoes=p=>{const s=SH[SK[p]||p]||SH._;return`<div class=shoe>👞 Formal shoes: <b>${s[0]}</b><br>👟 Sneakers: <b>${s[1]}</b><br>🩴 Sandals / slides: <b>${s[2]}</b></div>`};
+let S;try{S=JSON.parse(localStorage.fc)}catch(e){}S=S||{items:[],pf:{},occ:"casual"};
+const save=()=>{try{localStorage.fc=JSON.stringify(S)}catch(e){alert("Storage is full. Delete some items.")}};
+const $=s=>document.querySelector(s);let tab="out",pend=null,anchor="",chk={s:"Navy",p:"Beige"};
+const dot=n=>`<i class=dot style="background:${C[n].x}"></i>`;
+const chips=(sel,fn)=>Object.keys(C).map(n=>`<button class="chip ${sel==n?"on":""}" onclick="${fn}('${n}')">${dot(n)}${n}</button>`).join("");
+const occ=()=>`<div class=row>${["casual","office","wedding","eid"].map(o=>`<button class="chip ${S.occ==o?"on":""}" onclick="S.occ='${o}';save();R()">${o[0].toUpperCase()+o.slice(1)}</button>`).join("")}</div>`;
+const thumb=(i,c)=>i?`<img src="${i}">`:`<span class=sw style="background:${C[c].x}"></span>`;
+function card(sc,pc,r,si,pi){const t=[];for(let i=1;i<10;i++)t.push(`<u style="left:${i*10}%"></u>`);
+ return`<div class=card><div class=pair>${thumb(si,sc)}${thumb(pi,pc)}</div><div class=tape><i style="width:${100-r*10}%"></i>${t.join("")}<b>${r}/10</b></div>
+ <div><b>${tier(r)}</b> <span class=mu>${sc} shirt + ${pc} pants</span></div>${shoes(pc)}
+ ${S.pf.key?`<button class=ghost onclick="tip(this,'${sc}','${pc}')">✨ AI style tip</button><p class=mu></p>`:""}</div>`}
+function outView(){const sh=S.items.filter(i=>i.t=="shirt"),pa=S.items.filter(i=>i.t=="pants");let h=`<h1>Today’s outfit</h1>`+occ();
+ if(!sh.length||!pa.length)return h+`<p class=mu>Add at least one shirt and one pair of pants in Wardrobe. No photos handy? Use Check to test any two colors.</p>`;
+ const all=[];sh.forEach(s=>pa.forEach(p=>{if(anchor&&anchor!=s.id&&anchor!=p.id)return;all.push({s,p,r:rate(s.c,p.c,S.occ,S.pf)})}));all.sort((a,b)=>b.r-a.r);
+ return h+`<select onchange="anchor=this.value;R()"><option value="">All items</option>${S.items.map(i=>`<option value="${i.id}" ${anchor==i.id?"selected":""}>${i.t=="shirt"?"Shirt":"Pants"}: ${i.c}${i.kind?" ("+i.kind+")":""}</option>`).join("")}</select>`+all.slice(0,8).map(o=>card(o.s.c,o.p.c,o.r,o.s.img,o.p.img)).join("")}
+function chkView(){return`<h1>Check colors</h1>`+occ()+`<p class=mu>Shirt color</p><div class=row>${chips(chk.s,"cs")}</div><p class=mu>Pants color</p><div class=row>${chips(chk.p,"cp")}</div>`+card(chk.s,chk.p,rate(chk.s,chk.p,S.occ,S.pf))}
+function wardView(){const g=S.items.map(i=>`<div onclick="edit(${i.id})">${thumb(i.img,i.c)}<small>${i.c}</small><button class=x onclick="event.stopPropagation();del(${i.id})">×</button></div>`).join("");
+ return`<h1>Wardrobe</h1><button class=pri onclick="pick('shirt')">+ Add shirt</button><button class=pri onclick="pick('pants')">+ Add pants</button><p class=mu>Take a photo or choose one. Tap an item to fix its color.</p><div class=grid>${g}</div>`}
+function setView(){const ch=(k,L)=>`<div class=row>${L.map(v=>`<button class="chip ${S.pf[k]==v?"on":""}" onclick="S.pf['${k}']=S.pf['${k}']=='${v}'?'':'${v}';save();R()">${v}</button>`).join("")}</div>`;
+ return`<h1>Settings</h1><p class=mu>Skin tone</p>${ch("skin",Object.keys(SKIN))}<p class=mu>Season</p>${ch("season",Object.keys(SEAS))}
+ <p class=mu>Optional AI: free Gemini key from aistudio.google.com/apikey. It stays on this phone.</p><input type=password placeholder="Gemini API key" value="${S.pf.key||""}" onchange="S.pf.key=this.value.trim();save()">
+ <p></p><input type=text placeholder="Model (default gemini-flash-latest)" value="${S.pf.model||""}" onchange="S.pf.model=this.value.trim();save()"><p></p><button class=ghost onclick="if(confirm('Delete everything?')){S={items:[],pf:{},occ:'casual'};save();R()}">Reset all data</button>`}
+function sheet(){return pend?`<div class=sheet><div class=card><img class=big src="${pend.img}"><p class=mu>${pend.kind?pend.kind+". ":""}Tap the right color:</p><div class=row>${chips(pend.c,"setC")}</div><button class=pri onclick="saveP()">Save</button><button class=ghost onclick="pend=null;R()">Cancel</button></div></div>`:""}
+function R(){$("#m").innerHTML={out:outView,chk:chkView,war:wardView,set:setView}[tab]()+sheet();
+ $("#n").innerHTML=[["out","👔","Outfits"],["chk","🎨","Check"],["war","🧺","Wardrobe"],["set","⚙️","Settings"]].map(([k,e,l])=>`<button class="${tab==k?"on":""}" onclick="tab='${k}';R()"><span>${e}</span>${l}</button>`).join("")}
+const cs=n=>{chk.s=n;R()},cp=n=>{chk.p=n;R()},setC=n=>{pend.c=n;R()},pick=t=>{$("#f").dataset.t=t;$("#f").click()};
+const del=id=>{S.items=S.items.filter(i=>i.id!=id);save();R()},edit=id=>{pend={...S.items.find(i=>i.id==id),edit:1};R()};
+function saveP(){const o={...pend};delete o.edit;S.items=pend.edit?S.items.map(i=>i.id==o.id?o:i):[...S.items,o];pend=null;save();R()}
+function nearest(c){let b,bd=1e9;for(const n in C){const k=H(C[n].x),d=(c[0]-k[0])**2*.3+(c[1]-k[1])**2*.59+(c[2]-k[2])**2*.11;if(d<bd){bd=d;b=n}}return b}
+function detect(cv){const w=cv.width,h=cv.height,d=cv.getContext("2d").getImageData(w*.3,h*.3,w*.4,h*.4).data,b={};
+ for(let i=0;i<d.length;i+=4){const k=(d[i]>>4)+","+(d[i+1]>>4)+","+(d[i+2]>>4);b[k]=b[k]||[0,0,0,0];b[k][0]+=d[i];b[k][1]+=d[i+1];b[k][2]+=d[i+2];b[k][3]++}
+ const t=Object.values(b).sort((a,c)=>c[3]-a[3])[0];return nearest([0,1,2].map(i=>t[i]/t[3]))}
+async function gem(parts){const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${S.pf.model||"gemini-flash-latest"}:generateContent?key=${S.pf.key}`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({contents:[{parts}]})});const j=await r.json();if(!r.ok)throw(j.error&&j.error.message)||r.status;return j.candidates[0].content.parts[0].text}
+async function tip(btn,s,p){const o=btn.nextElementSibling;o.textContent="Thinking...";try{o.textContent=await gem([{text:`Occasion: ${S.occ}. Skin tone: ${S.pf.skin||"unspecified"}. Season: ${S.pf.season||"unspecified"}. Outfit: ${s} shirt with ${p} pants. Give 2 short sentences of styling advice (belt, watch, layers). No markdown.`}])}catch(e){o.textContent="AI error: "+e}}
+$("#f").onchange=async e=>{const f=e.target.files[0],t=e.target.dataset.t;e.target.value="";if(!f)return;
+ const im=new Image();im.src=URL.createObjectURL(f);await im.decode();const cv=document.createElement("canvas"),k=Math.min(1,220/Math.max(im.width,im.height));
+ cv.width=im.width*k;cv.height=im.height*k;cv.getContext("2d").drawImage(im,0,0,cv.width,cv.height);
+ const img=cv.toDataURL("image/jpeg",.65);pend={id:Date.now(),t,c:detect(cv),img,kind:""};R();
+ if(S.pf.key)try{const a=await gem([{text:`Look at this ${t}. Reply ONLY JSON: {"color":"one of ${Object.keys(C).join(", ")}","kind":"short type like polo shirt or chinos"}`},{inline_data:{mime_type:"image/jpeg",data:img.split(",")[1]}}]);
+ const j=JSON.parse(a.match(/\{[\s\S]*\}/)[0]);if(pend&&C[j.color])pend.c=j.color;if(pend)pend.kind=j.kind||"";R()}catch(x){}};
+R();if("serviceWorker"in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
+</script></body></html>
