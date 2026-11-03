@@ -5,105 +5,142 @@
 <link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-180.png">
 <title>FitCheck</title>
 <style>
-:root{--bg:#eef1f4;--card:#fff;--tx:#14181f;--mu:#667080;--bd:#d9dee5;--tape:#f2c230;--on:#14181f;--onx:#fff}
-@media(prefers-color-scheme:dark){:root{--bg:#101318;--card:#1a1f27;--tx:#eef1f4;--mu:#97a1b0;--bd:#2b323d;--on:#f2c230;--onx:#14181f}}
-*{box-sizing:border-box}html,body{height:100%}
+:root{--bg:#eef1f4;--card:#fff;--tx:#14181f;--mu:#667080;--bd:#d9dee5;--tape:#f2c230;--on:#14181f;--onx:#fff;--sh:0 8px 24px #14181f18}
+@media(prefers-color-scheme:dark){:root{--bg:#0e1116;--card:#1a1f27;--tx:#eef1f4;--mu:#97a1b0;--bd:#2b323d;--on:#f2c230;--onx:#14181f;--sh:0 8px 24px #0008}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{height:100%}
 body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.4 "Avenir Next",ui-rounded,system-ui,sans-serif;padding-top:env(safe-area-inset-top,0px)}
-main{padding:14px 14px calc(88px + env(safe-area-inset-bottom,0px));max-width:560px;margin:auto}
-h1{font-size:26px;margin:4px 0 12px;letter-spacing:-.02em}
-nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--bd);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
-nav button{flex:1;border:0;background:none;color:var(--mu);font:inherit;font-size:12px;padding:6px 0}
-nav button.on{color:var(--tx);font-weight:700}nav span{display:block;font-size:20px}
-.row{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
-.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:99px;padding:7px 12px;font:inherit;font-size:14px}
-.chip.on{background:var(--on);color:var(--onx);border-color:var(--on)}
-.dot{width:14px;height:14px;border-radius:50%;border:1px solid #8886;display:inline-block}
-.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px;margin:10px 0}
-.pair{display:flex;gap:8px}.pair img,.sw{flex:1;height:92px;min-width:0;object-fit:cover;border-radius:10px;border:1px solid var(--bd)}
-.tape{position:relative;height:30px;border-radius:6px;background:var(--tape);margin:12px 0 4px;overflow:hidden;color:#14181f}
-.tape i{position:absolute;top:0;bottom:0;right:0;background:var(--card);opacity:.88}
-.tape u{position:absolute;bottom:0;width:1px;height:8px;background:#14181f}
-.tape b{position:absolute;left:10px;top:3px;font-size:19px}
-.mu{color:var(--mu);font-size:14px}.shoe{font-size:14px;line-height:1.7;border-top:1px dashed var(--bd);margin-top:8px;padding-top:6px}
-button.pri,button.ghost{font:inherit;border-radius:10px;padding:10px 14px;border:1px solid var(--tx);margin:4px 4px 0 0}
+main{padding:12px 14px calc(96px + env(safe-area-inset-bottom,0px));max-width:560px;margin:auto}
+h1{font-size:30px;margin:6px 0 2px;letter-spacing:-.03em}.sub{color:var(--mu);margin:0 0 10px;font-size:14px}
+nav{position:fixed;left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom,0px));display:flex;background:var(--card);border:1px solid var(--bd);border-radius:22px;padding:6px;box-shadow:var(--sh);max-width:536px;margin:auto;z-index:5}
+nav button{flex:1;border:0;background:none;color:var(--mu);font:inherit;font-size:11px;padding:6px 0;border-radius:16px}
+nav button.on{background:var(--on);color:var(--onx);font-weight:700}nav span{display:block;font-size:19px}
+.row{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:99px;padding:8px 13px;font:inherit;font-size:14px}
+.chip.on{background:var(--on);color:var(--onx);border-color:var(--on);font-weight:600}
+.dot{width:26px;height:26px;border-radius:50%;border:2px solid var(--bd);display:inline-block}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:14px;margin:12px 0;box-shadow:var(--sh)}
+.oc{background:var(--card);border-radius:22px;margin:14px 0;overflow:hidden;box-shadow:var(--sh);border:1px solid var(--bd)}
+.ph{position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:2px}.ph img{width:100%;height:210px;object-fit:cover;display:block}
+.ph em{position:absolute;top:10px;right:10px;background:var(--tape);color:#14181f;font:700 18px/1 "Avenir Next",system-ui;font-style:normal;padding:8px 12px;border-radius:99px;box-shadow:0 2px 8px #0005}
+.cap{padding:10px 14px 14px;display:flex;flex-direction:column;gap:2px}.cap span{color:var(--mu);font-size:14px}
+.tape{position:relative;height:34px;border-radius:7px;background:var(--tape);margin:12px 0 6px;overflow:hidden;color:#14181f}
+.tape i{position:absolute;top:0;bottom:0;right:0;background:var(--card);opacity:.9}
+.tape u{position:absolute;bottom:0;width:1px;height:9px;background:#14181f}.tape b{position:absolute;left:12px;top:5px;font-size:20px}
+.mu{color:var(--mu);font-size:14px;margin:6px 0}.shoe{font-size:15px;line-height:1.8;border-top:1px dashed var(--bd);margin-top:10px;padding-top:8px}
+button.pri,button.ghost{font:inherit;border-radius:14px;padding:12px 16px;border:1px solid var(--tx);margin:4px 6px 0 0}
 button.pri{background:var(--on);color:var(--onx);border-color:var(--on);font-weight:700}button.ghost{background:none;color:var(--tx)}
-select,input[type=password],input[type=text]{width:100%;font:inherit;padding:10px;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx)}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.grid div{position:relative}.grid img,.grid .sw{width:100%;height:96px}
-.grid small{display:block;font-size:12px;text-align:center}.grid .x{position:absolute;top:4px;right:4px;background:#000a;color:#fff;border:0;border-radius:50%;width:24px;height:24px}
-.sheet{position:fixed;inset:0;background:#000a;display:flex;align-items:flex-end;z-index:9}.sheet .card{width:100%;margin:0;border-radius:18px 18px 0 0;max-height:86%;overflow:auto;padding-bottom:calc(14px + env(safe-area-inset-bottom,0px))}
-.big{width:100%;height:150px;object-fit:cover;border-radius:10px}
+select,input[type=password],input[type=text]{width:100%;font:inherit;padding:12px;border-radius:14px;border:1px solid var(--bd);background:var(--card);color:var(--tx)}
+input[type=color]{width:64px;height:44px;border:0;background:none;padding:0}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.grid div{position:relative;background:var(--card);border-radius:16px;overflow:hidden;border:1px solid var(--bd)}
+.grid img{width:100%;height:150px;object-fit:cover;display:block}.grid small{display:block;padding:8px 10px;font-size:13px}.grid .x{position:absolute;top:6px;right:6px;background:#000a;color:#fff;border:0;border-radius:50%;width:28px;height:28px}
+.sheet{position:fixed;inset:0;background:#000b;display:flex;align-items:flex-end;z-index:9}.sheet .card{width:100%;margin:0;border-radius:24px 24px 0 0;max-height:94%;overflow:auto;padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+.big{width:100%;height:190px;object-fit:cover;border-radius:14px}.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}.two.th{grid-template-columns:1fr 1fr 1fr}
+figure{margin:0}figure img{width:100%;height:300px;object-fit:contain;background:var(--bg);border-radius:14px}.two.th figure img{height:190px}figcaption{font-size:13px;color:var(--mu);text-align:center;margin-top:4px}
+.x2{position:absolute;right:14px;top:10px;border:0;background:var(--bg);color:var(--tx);border-radius:50%;width:36px;height:36px;font-size:20px}
+#t{position:fixed;left:50%;top:calc(14px + env(safe-area-inset-top,0px));transform:translateX(-50%);background:var(--on);color:var(--onx);padding:9px 16px;border-radius:99px;font-size:14px;opacity:0;transition:opacity .2s;z-index:20;pointer-events:none}
 </style></head><body>
-<main id="m"></main><input id="f" type="file" accept="image/*" hidden>
-<nav id="n"></nav>
+<main id="m"></main><input id="f" type="file" accept="image/*" multiple hidden><nav id="n"></nav><div id="t"></div>
 <script>
-const P=[["Black","#1a1a1a"],["White","#f5f5f5"],["Grey","#8a8d91"],["Charcoal","#3b3f45"],["Navy","#1f2a4d"],["Blue","#2f5fb3"],["Light Blue","#9cc3ea"],["Beige","#d8c3a5"],["Cream","#efe6d0"],["Brown","#6b4a2f"],["Tan","#b08d57"],["Khaki","#b5a26a"],["Olive","#6b6f2a"],["Green","#2f7a4b"],["Teal","#1f7a7a"],["Maroon","#6e1f2b"],["Red","#c0392b"],["Pink","#e7a1b8"],["Yellow","#e8c547"],["Orange","#e07b2a"],["Purple","#6a3d9a"]];
 const H=h=>[1,3,5].map(i=>parseInt(h.substr(i,2),16));
 function hsl([r,g,b]){r/=255;g/=255;b/=255;const M=Math.max(r,g,b),m=Math.min(r,g,b),l=(M+m)/2,d=M-m;let h=0,s=0;if(d){s=d/(1-Math.abs(2*l-1));h=M==r?((g-b)/d)%6:M==g?(b-r)/d+2:(r-g)/d+4;h=(h*60+360)%360}return{h,s,l}}
-const C={};P.forEach(([n,x])=>C[n]={n,x,...hsl(H(x))});
-const CORE=["Black","White","Grey","Charcoal","Cream","Beige"],EARTH=["Navy","Brown","Tan","Khaki","Olive"];
-const GOOD=[["Navy","Light Blue"],["Navy","White"],["Navy","Beige"],["Navy","Cream"],["Olive","Cream"],["Brown","Light Blue"],["Maroon","Beige"],["Maroon","Grey"],["Pink","Grey"],["Pink","Navy"],["Teal","Beige"],["Khaki","Navy"],["Khaki","White"],["Olive","White"],["Brown","Cream"],["Black","White"],["Blue","Beige"],["Light Blue","Khaki"],["Green","Beige"],["Light Blue","Charcoal"]];
-const BAD=[["Red","Green"],["Brown","Black"],["Orange","Pink"],["Red","Pink"],["Purple","Green"],["Red","Orange"],["Yellow","Pink"],["Blue","Green"],["Purple","Orange"]];
-const pr=(a,b,L)=>L.some(([x,y])=>(x==a&&y==b)||(x==b&&y==a));
-function pair(a,b){a=C[a];b=C[b];let s;
- if(pr(a.n,b.n,GOOD))s=9;else if(pr(a.n,b.n,BAD))s=3.5;
- else if(a.n==b.n)s=CORE.includes(a.n)||EARTH.includes(a.n)?6:4;
- else if(CORE.includes(a.n)||CORE.includes(b.n))s=8;
- else if(EARTH.includes(a.n)&&EARTH.includes(b.n))s=6;
- else if(EARTH.includes(a.n)||EARTH.includes(b.n))s=7;
- else{const d=Math.min(Math.abs(a.h-b.h),360-Math.abs(a.h-b.h));s=d<30?6.5:d>150?6:5;if(a.s>.55&&b.s>.55)s-=1.5}
- if(Math.abs(a.l-b.l)>.25)s+=.5;else if(a.n!=b.n)s-=.5;return s}
-const SKIN={fair:["Navy","Maroon","Teal","Blue","Purple","Pink"],wheatish:["Olive","Teal","Maroon","Navy","Cream","Blue"],olive:["Cream","Maroon","Teal","Navy","Orange","Green"],dark:["White","Yellow","Light Blue","Cream","Orange","Pink","Red"]};
-const SEAS={summer:n=>C[n].l>.6,winter:n=>C[n].l<.35,autumn:n=>["Olive","Brown","Tan","Khaki","Maroon","Orange","Beige"].includes(n),spring:n=>["Pink","Light Blue","Yellow","Cream","Green","White"].includes(n)};
-function rate(sh,pa,o,pf){let s=pair(sh,pa);const loud=n=>C[n].s>.6&&C[n].l>.3&&C[n].l<.75,has=(L,n)=>L.includes(n);
- if(o=="office"){if(loud(sh))s-=1.5;if(loud(pa))s-=1.5;if(has(["White","Light Blue","Blue","Cream","Grey","Pink","Beige"],sh))s+=.5;if(has(["Navy","Charcoal","Black","Grey","Khaki","Beige"],pa))s+=.5}
- if(o=="wedding"){if(has(["White","Cream","Maroon","Navy","Black","Light Blue"],sh))s+=.7;if(has(["Black","Charcoal","Navy","Beige"],pa))s+=.7;if(has(["Yellow","Orange","Olive","Khaki"],sh))s-=1}
- if(o=="eid"){if(has(["White","Cream","Light Blue","Pink","Beige","Green","Teal"],sh))s+=1;if(C[sh].l<.3&&C[pa].l<.3)s-=.8}
- if(o=="casual"&&has(["Olive","Khaki","Blue"],pa))s+=.3;
- if(pf.skin&&SKIN[pf.skin].includes(sh))s+=.5;if(pf.season&&SEAS[pf.season](sh))s+=.5;
+const hx=({h,s,l})=>{const a=s*Math.min(l,1-l),f=n=>{const k=(n+h/30)%12;return Math.round(255*(l-a*Math.max(-1,Math.min(k-3,9-k,1))))};return"#"+[f(0),f(8),f(4)].map(v=>v.toString(16).padStart(2,"0")).join("")};
+const HN=[[15,"Red"],[40,"Orange"],[65,"Yellow"],[90,"Lime"],[165,"Green"],[195,"Teal"],[255,"Blue"],[290,"Purple"],[345,"Pink"],[361,"Red"]];
+function nm(hex){const{h,s,l}=hsl(H(hex));
+ if(l>.93)return["White","core"];if(l<.09)return["Black","core"];
+ if(s<.12)return l<.24?["Charcoal","core"]:l<.42?["Dark Grey","core"]:l<.72?["Grey","core"]:["Light Grey","core"];
+ const hn=HN.find(x=>h<x[0])[1];
+ if(h>=10&&h<50&&s>.15&&s<.85&&l<.4)return["Brown","earth"];
+ if(h>=30&&h<62&&s<.55&&l>=.5)return l>.82?["Cream","earth"]:l>.68?["Beige","earth"]:h>46?["Khaki","earth"]:["Tan","earth"];
+ if(h>=55&&h<95&&l<.45&&s<.7)return["Olive","earth"];
+ if(hn=="Blue"&&l<.3)return["Navy","earth"];if(hn=="Red"&&l<.35)return["Maroon","col"];
+ if(h>=38&&h<56&&s>.6&&l>.35&&l<.65)return["Mustard","col"];
+ return[hn=="Red"&&l>.7?"Pink":(l<.27?"Dark ":l>.75?"Light ":"")+hn,"col"]}
+const TY={shirt:["tshirt","polo","buttonup"],pants:["jeans","trousers","chinos","cargo","joggers","shorts"],jacket:["blazer","leather","bomber","hoodie","denim","puffer","coat"]};
+const LB={tshirt:"T-shirt",polo:"Polo",buttonup:"Button-up",jeans:"Jeans",trousers:"Trousers",chinos:"Chinos",cargo:"Cargo pants",joggers:"Joggers",shorts:"Shorts",blazer:"Blazer",leather:"Leather jacket",bomber:"Bomber",hoodie:"Hoodie",denim:"Denim jacket",puffer:"Puffer",coat:"Coat"};
+const FM={tshirt:1,polo:2,buttonup:3,jeans:1,trousers:3,chinos:2,cargo:.5,joggers:0,shorts:0,blazer:3,leather:2,bomber:1.5,hoodie:0,denim:1,puffer:1,coat:3};
+function meta(it){const[n,f]=nm(it.hex),c=hsl(H(it.hex));
+ if(it.type=="jeans"&&f=="col"&&c.h>195&&c.h<255&&c.l<.6&&c.s<.65)return{...c,n:it.name||"Denim",k:n,f:"denim"};return{...c,n:it.name||n,k:n,f}}
+function pair(a,b){const dh=Math.min(Math.abs(a.h-b.h),360-Math.abs(a.h-b.h)),dl=Math.abs(a.l-b.l),has=f=>a.f==f||b.f==f,k2=(x,y)=>(a.k==x&&b.k==y)||(a.k==y&&b.k==x),ak=(...L)=>L.includes(a.k)||L.includes(b.k),loud=m=>m.f=="col"&&m.s>.7&&m.l>.35&&m.l<.7;let s;
+ if(a.f=="core"&&b.f=="core")s=a.k==b.k?5:k2("Black","White")?8.5:(a.l<.3&&b.l<.3)||dl<.15?5.5:7.5;
+ else if(has("core")){const c=a.f=="core"?a:b,o=a.f=="core"?b:a;s=8.5;if(loud(o))s=c.k=="Black"?8:6.5;if(c.k=="Black"&&o.l<.2)s=5.5}
+ else if(has("denim")){const o=a.f=="denim"?b:a;s=o.f=="earth"?(o.k=="Brown"?6:7.5):o.f=="col"?(o.s>.65?6.5:7.5):dl>.2?8:5.5}
+ else if(a.f=="earth"&&b.f=="earth"){s=6;if(ak("Navy")&&ak("Beige","Cream","Khaki","Tan"))s=9;else if(k2("Brown","Cream")||k2("Brown","Beige")||k2("Olive","Cream")||k2("Olive","Beige"))s=8.5;else if(a.k==b.k)s=dl>.25?7:4;else if(k2("Navy","Brown")||k2("Navy","Olive"))s=5}
+ else if(has("earth")){const e=a.f=="earth"?a:b,o=a.f=="earth"?b:a;s=e.k=="Navy"||e.l>.65?8:e.k=="Brown"?6.5:e.k=="Olive"?6:7;if(loud(o))s-=1;if(e.k=="Navy"&&o.l<.3)s=5}
+ else{s=dh<25?(dl>.25?8:5.5):dh>155&&dh<205?(Math.min(a.s,b.s)<.45?6.5:4.5):5;if(a.s>.6&&b.s>.6)s-=2;if(dl>.25&&dh>=25)s+=.5}
+ if(a.f!="core"&&b.f!="core"&&dl<.12&&a.k!=b.k)s-=1;return s}
+const SKIN={fair:m=>(m.h>=170&&m.h<=300&&m.s>.25)||["Navy","Maroon"].includes(m.k),wheatish:m=>["Olive","Teal","Maroon","Navy","Cream"].includes(m.k)||(m.h>190&&m.h<260&&m.s>.3),olive:m=>["Cream","Maroon","Teal","Navy"].includes(m.k)||(m.f=="col"&&m.h>80&&m.h<170),dark:m=>m.l>.72||(m.f=="col"&&m.s>.6&&m.l>.4)};
+const SEAS={summer:m=>m.l>.6,winter:m=>m.l<.35,autumn:m=>m.f=="earth"||["Maroon","Mustard","Orange"].includes(m.k),spring:m=>m.f=="col"&&m.l>.55};
+function rate(a,b,o,pf){const A=meta(a),B=meta(b);let s=pair(A,B);const ps=x=>x.pat&&x.pat!="solid";
+ if(ps(a)&&ps(b))s-=1.5;else if(ps(a)&&A.f!="core"&&B.f!="core"&&B.s>.3)s-=.5;
+ const f1=FM[a.type],f2=FM[b.type],fm=(f1+f2)/2,need={office:2.2,wedding:2.6,eid:2}[o]||0;
+ if(fm<need)s-=(need-fm)*2;if(Math.abs(f1-f2)>=2.5)s-=1;
+ const loud=m=>m.f=="col"&&m.s>.6&&m.l>.3&&m.l<.75;
+ if(o=="office"){if(loud(A))s-=1.5;if(loud(B))s-=1.5}
+ if(o=="wedding"){if(["White","Cream","Maroon","Navy","Black"].includes(A.k)||(A.f=="col"&&A.l<.3))s+=.7;if((B.f=="core"&&B.l<.3)||B.k=="Navy"||B.k=="Beige")s+=.7;if(["Mustard","Olive"].includes(A.k))s-=1}
+ if(o=="eid"&&A.l>.72)s+=1;
+ if(pf.skin&&SKIN[pf.skin](A))s+=.5;if(pf.season&&SEAS[pf.season](A))s+=.5;
  return Math.max(1,Math.min(10,Math.round(s*10)/10))}
 const tier=r=>r>=8.5?"Great match":r>=7?"Good match":r>=5.5?"Okay":"Clashes";
 const SH={Black:["Black","White or black sneakers","Black slides"],White:["Brown, tan or black","White or beige sneakers","Tan sandals"],Grey:["Black or dark brown","White or grey sneakers","Black or brown sandals"],Navy:["Brown, tan or burgundy","White sneakers","Brown or tan sandals"],Beige:["Brown, tan or navy","White or brown sneakers","Brown sandals"],Brown:["Dark brown or black","White or tan sneakers","Brown sandals"],Olive:["Brown or black","White or brown sneakers","Brown or tan sandals"],Maroon:["Black or dark brown","White or black sneakers","Black sandals"],_:["Black or brown","White sneakers","Black or brown sandals"]};
-const SK={Charcoal:"Grey",Blue:"Navy",Khaki:"Beige",Cream:"Beige",Tan:"Beige",Green:"Olive",Red:"Maroon"};
-const shoes=p=>{const s=SH[SK[p]||p]||SH._;return`<div class=shoe>👞 Formal shoes: <b>${s[0]}</b><br>👟 Sneakers: <b>${s[1]}</b><br>🩴 Sandals / slides: <b>${s[2]}</b></div>`};
-let S;try{S=JSON.parse(localStorage.fc)}catch(e){}S=S||{items:[],pf:{},occ:"casual"};
-const save=()=>{try{localStorage.fc=JSON.stringify(S)}catch(e){alert("Storage is full. Delete some items.")}};
-const $=s=>document.querySelector(s);let tab="out",pend=null,anchor="",chk={s:"Navy",p:"Beige"};
-const dot=n=>`<i class=dot style="background:${C[n].x}"></i>`;
-const chips=(sel,fn)=>Object.keys(C).map(n=>`<button class="chip ${sel==n?"on":""}" onclick="${fn}('${n}')">${dot(n)}${n}</button>`).join("");
+const SK={Charcoal:"Grey","Dark Grey":"Grey","Light Grey":"Grey",Khaki:"Beige",Cream:"Beige",Tan:"Beige",Green:"Olive",Red:"Maroon",Blue:"Navy",Teal:"Navy",Mustard:"Brown"};
+function shoes(m,o){const k=m.k.replace(/^(Dark|Light) /,""),s=SH[SK[k]||k]||SH[m.f=="denim"?"Navy":"_"],L=[["👞 Formal shoes",s[0]],["👟 Sneakers",s[1]],["🩴 Sandals / slides",s[2]]];
+ return`<div class=shoe>${({casual:[1,2,0],eid:[0,2,1]}[o]||[0,1,2]).map(i=>`${L[i][0]}: <b>${L[i][1]}</b>`).join("<br>")}</div>`}
+const jr=(j,s,p,o)=>{const J=meta(j);let v=(pair(J,meta(s))+pair(J,meta(p)))/2;if(o=="office"||o=="wedding")v-=Math.max(0,2.5-FM[j.type])*1.2;return Math.round(v*10)/10};
+/*UI*/
+const db=new Promise(r=>{const q=indexedDB.open("fc",1);q.onupgradeneeded=()=>q.result.createObjectStore("s");q.onsuccess=()=>r(q.result)});
+const idb=async(m,k,v)=>{const d=await db;return new Promise(r=>{const o=d.transaction("s",m=="get"?"readonly":"readwrite").objectStore("s"),q=m=="get"?o.get(k):o.put(v,k);q.onsuccess=()=>r(q.result)})};
+let S={items:[],pf:{},occ:"casual",jk:0};const save=()=>idb("set","fc",S);
+const $=s=>document.querySelector(s);let tab="out",wsec="shirt",pend=null,done=null,det=null,anchor="",chk={a:{hex:"#1f3d2b",type:"buttonup"},b:{hex:"#8a8d91",type:"trousers"}};
+const g=id=>S.items.find(i=>i.id==id),I=s=>S.items.filter(i=>i.sec==s),n2=i=>`${meta(i).n} ${LB[i.type]}`;
+const toast=m=>{const t=$("#t");t.textContent=m;t.style.opacity=1;clearTimeout(toast.k);toast.k=setTimeout(()=>t.style.opacity=0,2600)};
+const tape=r=>`<div class=tape><i style="width:${100-r*10}%"></i>${[1,2,3,4,5,6,7,8,9].map(i=>`<u style="left:${i*10}%"></u>`).join("")}<b>${r}/10</b></div>`;
 const occ=()=>`<div class=row>${["casual","office","wedding","eid"].map(o=>`<button class="chip ${S.occ==o?"on":""}" onclick="S.occ='${o}';save();R()">${o[0].toUpperCase()+o.slice(1)}</button>`).join("")}</div>`;
-const thumb=(i,c)=>i?`<img src="${i}">`:`<span class=sw style="background:${C[c].x}"></span>`;
-function card(sc,pc,r,si,pi){const t=[];for(let i=1;i<10;i++)t.push(`<u style="left:${i*10}%"></u>`);
- return`<div class=card><div class=pair>${thumb(si,sc)}${thumb(pi,pc)}</div><div class=tape><i style="width:${100-r*10}%"></i>${t.join("")}<b>${r}/10</b></div>
- <div><b>${tier(r)}</b> <span class=mu>${sc} shirt + ${pc} pants</span></div>${shoes(pc)}
- ${S.pf.key?`<button class=ghost onclick="tip(this,'${sc}','${pc}')">✨ AI style tip</button><p class=mu></p>`:""}</div>`}
-function outView(){const sh=S.items.filter(i=>i.t=="shirt"),pa=S.items.filter(i=>i.t=="pants");let h=`<h1>Today’s outfit</h1>`+occ();
- if(!sh.length||!pa.length)return h+`<p class=mu>Add at least one shirt and one pair of pants in Wardrobe. No photos handy? Use Check to test any two colors.</p>`;
- const all=[];sh.forEach(s=>pa.forEach(p=>{if(anchor&&anchor!=s.id&&anchor!=p.id)return;all.push({s,p,r:rate(s.c,p.c,S.occ,S.pf)})}));all.sort((a,b)=>b.r-a.r);
- return h+`<select onchange="anchor=this.value;R()"><option value="">All items</option>${S.items.map(i=>`<option value="${i.id}" ${anchor==i.id?"selected":""}>${i.t=="shirt"?"Shirt":"Pants"}: ${i.c}${i.kind?" ("+i.kind+")":""}</option>`).join("")}</select>`+all.slice(0,8).map(o=>card(o.s.c,o.p.c,o.r,o.s.img,o.p.img)).join("")}
-function chkView(){return`<h1>Check colors</h1>`+occ()+`<p class=mu>Shirt color</p><div class=row>${chips(chk.s,"cs")}</div><p class=mu>Pants color</p><div class=row>${chips(chk.p,"cp")}</div>`+card(chk.s,chk.p,rate(chk.s,chk.p,S.occ,S.pf))}
-function wardView(){const g=S.items.map(i=>`<div onclick="edit(${i.id})">${thumb(i.img,i.c)}<small>${i.c}</small><button class=x onclick="event.stopPropagation();del(${i.id})">×</button></div>`).join("");
- return`<h1>Wardrobe</h1><button class=pri onclick="pick('shirt')">+ Add shirt</button><button class=pri onclick="pick('pants')">+ Add pants</button><p class=mu>Take a photo or choose one. Tap an item to fix its color.</p><div class=grid>${g}</div>`}
+function bestJ(s,p){let b=null;I("jacket").forEach(j=>{const v=jr(j,s,p,S.occ);if(v>=6.5&&(!b||v>b.v))b={it:j,v}});return b}
+function outView(){const a=[];I("shirt").forEach(s=>I("pants").forEach(p=>{if(anchor&&anchor!=s.id&&anchor!=p.id)return;const r=rate(s,p,S.occ,S.pf);if(r>=7)a.push({s,p,r})}));a.sort((x,y)=>y.r-x.r);
+ let h=`<h1>Outfits</h1><p class=sub>Only matches rated 7 or higher</p>`+occ()+`<div class=row><button class="chip ${S.jk?"on":""}" onclick="S.jk=!S.jk;save();R()">🧥 Add jacket</button></div>`;
+ if(!I("shirt").length||!I("pants").length)return h+`<p class=mu>Add at least one shirt and one pair of pants in Wardrobe.</p>`;
+ h+=`<select onchange="anchor=this.value;R()"><option value="">Use all my clothes</option>${S.items.filter(i=>i.sec!="jacket").map(i=>`<option value="${i.id}" ${anchor==i.id?"selected":""}>${n2(i)}</option>`).join("")}</select>`;
+ if(!a.length)return h+`<p class=mu>No outfit reaches 7 for ${S.occ} yet. Add more clothes or try another occasion.</p>`;
+ return h+a.slice(0,12).map(o=>{const j=S.jk?bestJ(o.s,o.p):null;return`<div class=oc onclick="det=[${o.s.id},${o.p.id}];R()"><div class=ph><img src="${o.s.img}"><img src="${o.p.img}">${j?`<img src="${j.it.img}">`:""}<em>${o.r}</em></div><div class=cap><b>${tier(o.r)}</b><span>${n2(o.s)} + ${n2(o.p)}</span></div></div>`}).join("")}
+function detail(){if(!det)return"";const s=g(det[0]),p=g(det[1]);if(!s||!p)return"";const r=rate(s,p,S.occ,S.pf),j=bestJ(s,p);
+ return`<div class=sheet><div class=card style="height:94%"><button class=x2 onclick="det=null;R()">×</button><h1 style="font-size:22px;margin:0 0 8px">${tier(r)}</h1>
+ <div class=two><figure><img src="${s.img}"><figcaption>${n2(s)}</figcaption></figure><figure><img src="${p.img}"><figcaption>${n2(p)}</figcaption></figure></div>${tape(r)}${shoes(meta(p),S.occ)}
+ ${j?`<div class=shoe>🧥 Best jacket: <b>${n2(j.it)}</b> (${j.v}/10)<br><img src="${j.it.img}" style="width:100%;height:220px;object-fit:contain;border-radius:14px;background:var(--bg)"></div>`:""}
+ ${S.pf.key?`<button class=ghost onclick="review(${s.id},${p.id},${j?j.it.id:0})">✨ Ask AI to review</button><p class=mu id=rv></p>`:""}</div></div>`}
+function chkView(){const row=(k,t)=>`<div class=row><input type=color value="${chk[k].hex}" onchange="chk.${k}.hex=this.value;R()"><select style="width:auto" onchange="chk.${k}.type=this.value;R()">${TY[t].map(x=>`<option value=${x} ${chk[k].type==x?"selected":""}>${LB[x]}</option>`).join("")}</select><b>${meta(chk[k]).n}</b></div>`;
+ const r=rate(chk.a,chk.b,S.occ,S.pf);return`<h1>Check</h1><p class=sub>Test any two colors, no photos needed</p>`+occ()+`<p class=mu>Shirt</p>${row("a","shirt")}<p class=mu>Pants</p>${row("b","pants")}<div class=card>${tape(r)}<b>${tier(r)}</b>${shoes(meta(chk.b),S.occ)}</div>`}
+function wardView(){const L=I(wsec);return`<h1>Wardrobe</h1><div class=row>${[["shirt","Shirts"],["pants","Pants"],["jacket","Jackets"]].map(([k,l])=>`<button class="chip ${wsec==k?"on":""}" onclick="wsec='${k}';R()">${l} ${I(k).length}</button>`).join("")}</div>
+ <button class=pri onclick="pick()">+ Add photos</button><p class=mu>${S.pf.key?"AI scans each photo for color and type.":"Add a free Gemini key in Settings so AI can read colors."}</p>
+ <div class=grid>${L.map(i=>`<div onclick="edit(${i.id})"><img src="${i.img}"><small><i class=dot style="width:12px;height:12px;background:${i.hex}"></i> ${n2(i)}</small><button class=x onclick="event.stopPropagation();del(${i.id})">×</button></div>`).join("")}</div>`}
 function setView(){const ch=(k,L)=>`<div class=row>${L.map(v=>`<button class="chip ${S.pf[k]==v?"on":""}" onclick="S.pf['${k}']=S.pf['${k}']=='${v}'?'':'${v}';save();R()">${v}</button>`).join("")}</div>`;
- return`<h1>Settings</h1><p class=mu>Skin tone</p>${ch("skin",Object.keys(SKIN))}<p class=mu>Season</p>${ch("season",Object.keys(SEAS))}
- <p class=mu>Optional AI: free Gemini key from aistudio.google.com/apikey. It stays on this phone.</p><input type=password placeholder="Gemini API key" value="${S.pf.key||""}" onchange="S.pf.key=this.value.trim();save()">
- <p></p><input type=text placeholder="Model (default gemini-flash-latest)" value="${S.pf.model||""}" onchange="S.pf.model=this.value.trim();save()"><p></p><button class=ghost onclick="if(confirm('Delete everything?')){S={items:[],pf:{},occ:'casual'};save();R()}">Reset all data</button>`}
-function sheet(){return pend?`<div class=sheet><div class=card><img class=big src="${pend.img}"><p class=mu>${pend.kind?pend.kind+". ":""}Tap the right color:</p><div class=row>${chips(pend.c,"setC")}</div><button class=pri onclick="saveP()">Save</button><button class=ghost onclick="pend=null;R()">Cancel</button></div></div>`:""}
-function R(){$("#m").innerHTML={out:outView,chk:chkView,war:wardView,set:setView}[tab]()+sheet();
+ return`<h1>Settings</h1><p class=mu>Skin tone</p>${ch("skin",Object.keys(SKIN))}<p class=mu>Season</p>${ch("season",Object.keys(SEAS))}<p class=mu>Free Gemini key from aistudio.google.com/apikey. Stored only on this phone.</p>
+ <input type=password placeholder="Gemini API key" value="${S.pf.key||""}" onchange="S.pf.key=this.value.trim();save()"><p></p><input type=text placeholder="Model (default gemini-flash-latest)" value="${S.pf.model||""}" onchange="S.pf.model=this.value.trim();save()"><p></p>
+ <button class=ghost onclick="if(confirm('Delete everything?')){S={items:[],pf:{},occ:'casual',jk:0};save();R()}">Reset all data</button>`}
+function sheet(){if(!pend)return"";return`<div class=sheet><div class=card><img class=big src="${pend.img}"><div class=row><i class=dot style="background:${pend.hex}"></i><b>${meta(pend).n}</b>${pend.ai?`<span class=mu>AI-scanned</span>`:""}</div>
+ <p class=mu>Type</p><div class=row>${TY[pend.sec].map(t=>`<button class="chip ${pend.type==t?"on":""}" onclick="pend.type='${t}';R()">${LB[t]}</button>`).join("")}</div>
+ ${pend.ai&&!pend.ed?`<button class=ghost onclick="pend.ed=1;R()">Change color</button>`:`<p class=mu>Color</p><input type=color value="${pend.hex}" onchange="pend.hex=this.value;pend.name='';R()">`}
+ ${S.pf.key?`<button class=ghost onclick="rescan()">Scan with AI</button>`:""}<br><button class=pri onclick="saveP()">Save</button><button class=ghost onclick="cancelP()">Cancel</button></div></div>`}
+function R(){$("#m").innerHTML={out:outView,chk:chkView,war:wardView,set:setView}[tab]()+sheet()+detail();
  $("#n").innerHTML=[["out","👔","Outfits"],["chk","🎨","Check"],["war","🧺","Wardrobe"],["set","⚙️","Settings"]].map(([k,e,l])=>`<button class="${tab==k?"on":""}" onclick="tab='${k}';R()"><span>${e}</span>${l}</button>`).join("")}
-const cs=n=>{chk.s=n;R()},cp=n=>{chk.p=n;R()},setC=n=>{pend.c=n;R()},pick=t=>{$("#f").dataset.t=t;$("#f").click()};
-const del=id=>{S.items=S.items.filter(i=>i.id!=id);save();R()},edit=id=>{pend={...S.items.find(i=>i.id==id),edit:1};R()};
-function saveP(){const o={...pend};delete o.edit;S.items=pend.edit?S.items.map(i=>i.id==o.id?o:i):[...S.items,o];pend=null;save();R()}
-function nearest(c){let b,bd=1e9;for(const n in C){const k=H(C[n].x),d=(c[0]-k[0])**2*.3+(c[1]-k[1])**2*.59+(c[2]-k[2])**2*.11;if(d<bd){bd=d;b=n}}return b}
+const pick=()=>$("#f").click(),del=id=>{S.items=S.items.filter(i=>i.id!=id);save();R()},edit=id=>{pend={...g(id),edit:1};R()};
+function saveP(){const o={...pend};delete o.edit;delete o.ed;S.items=pend.edit?S.items.map(i=>i.id==o.id?o:i):[...S.items,o];pend=null;save();R();if(done){done();done=null}}
+const cancelP=()=>{pend=null;R();if(done){done();done=null}};
+async function gem(parts,json){const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${S.pf.model||"gemini-flash-latest"}:generateContent?key=${S.pf.key}`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({contents:[{parts}],generationConfig:json?{responseMimeType:"application/json"}:{}})});const j=await r.json();if(!r.ok)throw(j.error&&j.error.message)||r.status;return j.candidates[0].content.parts[0].text}
+const b64=u=>({inline_data:{mime_type:"image/jpeg",data:u.split(",")[1]}});
+async function scan(it){const a=await gem([{text:`This is a photo of a ${it.sec} (clothing item). Decide its TRUE fabric color as a person would see it in daylight, correcting for camera white balance, shadows and flash (a dark green shirt can look grey in photos; never answer grey unless it really is grey). Reply JSON only: {"type":"one of ${TY[it.sec].join("|")}","name":"specific color name like Dark Green, Burgundy, Mustard","hex":"#rrggbb of the true fabric color","pattern":"solid|striped|checked|printed"}`},b64(it.img)],1);
+ const j=JSON.parse(a.match(/\{[\s\S]*\}/)[0]);if(!/^#[0-9a-f]{6}$/i.test(j.hex))throw"bad color";it.hex=j.hex.toLowerCase();it.name=j.name||"";it.pat=j.pattern||"solid";if(TY[it.sec].includes(j.type))it.type=j.type;it.ai=1}
+async function rescan(){toast("Scanning...");try{await scan(pend);delete pend.ed}catch(e){toast("AI error: "+e)}R()}
+async function review(a,b,c){const o=$("#rv");o.textContent="Reviewing...";const L=[g(a),g(b),c&&g(c)].filter(Boolean);try{o.textContent=await gem([{text:`Occasion: ${S.occ}. Skin tone: ${S.pf.skin||"unspecified"}. Season: ${S.pf.season||"unspecified"}. These photos are the shirt, the pants${c?" and a jacket":""} of one outfit. Rate the whole outfit out of 10 and give 3 short styling tips (shoes, belt, watch). Plain text, no markdown.`},...L.map(i=>b64(i.img))])}catch(e){o.textContent="AI error: "+e}}
 function detect(cv){const w=cv.width,h=cv.height,d=cv.getContext("2d").getImageData(w*.3,h*.3,w*.4,h*.4).data,b={};
  for(let i=0;i<d.length;i+=4){const k=(d[i]>>4)+","+(d[i+1]>>4)+","+(d[i+2]>>4);b[k]=b[k]||[0,0,0,0];b[k][0]+=d[i];b[k][1]+=d[i+1];b[k][2]+=d[i+2];b[k][3]++}
- const t=Object.values(b).sort((a,c)=>c[3]-a[3])[0];return nearest([0,1,2].map(i=>t[i]/t[3]))}
-async function gem(parts){const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${S.pf.model||"gemini-flash-latest"}:generateContent?key=${S.pf.key}`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({contents:[{parts}]})});const j=await r.json();if(!r.ok)throw(j.error&&j.error.message)||r.status;return j.candidates[0].content.parts[0].text}
-async function tip(btn,s,p){const o=btn.nextElementSibling;o.textContent="Thinking...";try{o.textContent=await gem([{text:`Occasion: ${S.occ}. Skin tone: ${S.pf.skin||"unspecified"}. Season: ${S.pf.season||"unspecified"}. Outfit: ${s} shirt with ${p} pants. Give 2 short sentences of styling advice (belt, watch, layers). No markdown.`}])}catch(e){o.textContent="AI error: "+e}}
-$("#f").onchange=async e=>{const f=e.target.files[0],t=e.target.dataset.t;e.target.value="";if(!f)return;
- const im=new Image();im.src=URL.createObjectURL(f);await im.decode();const cv=document.createElement("canvas"),k=Math.min(1,220/Math.max(im.width,im.height));
- cv.width=im.width*k;cv.height=im.height*k;cv.getContext("2d").drawImage(im,0,0,cv.width,cv.height);
- const img=cv.toDataURL("image/jpeg",.65);pend={id:Date.now(),t,c:detect(cv),img,kind:""};R();
- if(S.pf.key)try{const a=await gem([{text:`Look at this ${t}. Reply ONLY JSON: {"color":"one of ${Object.keys(C).join(", ")}","kind":"short type like polo shirt or chinos"}`},{inline_data:{mime_type:"image/jpeg",data:img.split(",")[1]}}]);
- const j=JSON.parse(a.match(/\{[\s\S]*\}/)[0]);if(pend&&C[j.color])pend.c=j.color;if(pend)pend.kind=j.kind||"";R()}catch(x){}};
-R();if("serviceWorker"in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
+ const t=Object.values(b).sort((a,c)=>c[3]-a[3])[0],c=hsl([0,1,2].map(i=>t[i]/t[3]));if(c.s>.05&&c.l<.55)c.s=Math.min(1,c.s*1.6);return hx(c)}
+$("#f").onchange=async e=>{const fs=[...e.target.files];e.target.value="";let n=0;
+ for(const f of fs){toast(`Adding ${++n} of ${fs.length}...`);const im=new Image();im.src=URL.createObjectURL(f);await im.decode();const cv=document.createElement("canvas"),k=Math.min(1,480/Math.max(im.width,im.height));
+  cv.width=im.width*k;cv.height=im.height*k;cv.getContext("2d").drawImage(im,0,0,cv.width,cv.height);
+  const it={id:Date.now()+n,sec:wsec,type:TY[wsec][0],hex:detect(cv),name:"",pat:"solid",img:cv.toDataURL("image/jpeg",.78),ai:0};
+  if(S.pf.key)try{await scan(it)}catch(x){toast("AI error: "+x)}
+  if(it.ai){S.items.push(it);await save();R()}else{pend=it;await new Promise(r=>{done=r;R()})}}
+ toast("Done")};
+(async()=>{try{const o=await idb("get","fc");if(o)S=o;else S.pf=JSON.parse(localStorage.fc).pf||{}}catch(e){}R()})();
+if("serviceWorker"in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
 </script></body></html>
