@@ -92,7 +92,7 @@ Your digital closet, split into **Shirts**, **Pants** and **Jackets**.
 Not sure what to buy next? FitCheck tests common colors against your wardrobe and shows the **top 4 shirt colors and top 4 pants colors** that would unlock the most new outfits rated 7+. A **Packing list** picks the smallest set of pieces that makes the most great outfits for a 3, 5, 7 or 10 day trip. It also has a **Test any two colors** tool, so you can check a combination before you buy anything.
 
 ### ⚙️ Settings
-Skin tone and season preferences, AI provider, haptic feedback, **backup and restore**, a replay of the welcome tour, and reset.
+Skin tone and season preferences, AI provider, animation preference, **backup and restore**, a replay of the welcome tour, and reset.
 
 ---
 
@@ -154,7 +154,7 @@ Clearing Safari's website data erases the wardrobe, so back it up now and then.
 
 ## ♿ Accessibility
 
-Photos, buttons, cards, pop-ups and rating rings have spoken labels for VoiceOver, toggle states are announced, focus is clearly visible, and animations switch off when your phone's **Reduce Motion** setting is on. Haptic feedback is best-effort (iPhone Safari has no standard vibration feature) and can be turned off in Settings.
+Photos, buttons, cards, pop-ups and rating rings have spoken labels for VoiceOver, toggle states are announced, focus is clearly visible, and animations can follow your phone's **Reduce Motion** setting if you turn that on in Settings.
 
 ---
 
