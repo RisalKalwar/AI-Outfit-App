@@ -56,7 +56,7 @@ It works in any modern browser, but it is designed for phones.
 ### 👔 Outfits
 Your daily answer. Pick the occasion (**Casual, Office, Wedding, Eid**) and FitCheck shows your best matches first.
 
-- A large **Best match** card, then a grid of more matches
+- A large **Today's pick** card with a **Not this one** button, then a clean list of more matches
 - By default only outfits rated **7 or higher** are shown. Flip **Show outfits below 7** to see the rest
 - **With jacket** adds the best matching jacket to each outfit
 - **♥ Saved** keeps your favorite outfits in one place
@@ -81,9 +81,15 @@ Your digital closet, split into **Shirts**, **Pants** and **Jackets**.
 - Support for **two-color pieces** (striped, checked, color-blocked)
 - A **duplicate warning** if a new photo looks like one you already added
 - **Clean up with AI** to re-scan and crop older photos
+- **Add by color** to add a piece in seconds with no photo, and a **demo wardrobe** to try the app instantly
+- **Take photos** mode with a quick photo-tips sheet and a "Next photo" button for adding many pieces fast
+- The AI **sorts each photo** into shirts, pants or jackets for you
+- An **In laundry** switch hides a piece from outfits until you switch it back
+- **Select** several pieces to delete or send to laundry together, and **Undo** after deleting
+- Small saved thumbnails keep long lists fast
 
 ### 🛍️ Shop
-Not sure what to buy next? FitCheck tests common colors against your wardrobe and shows the **top 4 shirt colors and top 4 pants colors** that would unlock the most new outfits rated 7+. It also has a **Test any two colors** tool, so you can check a combination before you buy anything.
+Not sure what to buy next? FitCheck tests common colors against your wardrobe and shows the **top 4 shirt colors and top 4 pants colors** that would unlock the most new outfits rated 7+. A **Packing list** picks the smallest set of pieces that makes the most great outfits for a 3, 5, 7 or 10 day trip. It also has a **Test any two colors** tool, so you can check a combination before you buy anything.
 
 ### ⚙️ Settings
 Skin tone and season preferences, AI provider, haptic feedback, **backup and restore**, a replay of the welcome tour, and reset.
