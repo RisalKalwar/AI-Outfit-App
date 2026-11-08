@@ -23,7 +23,7 @@ An AI-powered outfit matcher that lives on your phone. Photograph your clothes o
 
 Almost every morning the same question shows up: *does this green shirt go with these grey pants?* FitCheck answers it with real color theory, applied to the clothes you actually own, in a few seconds.
 
-- 🎯 **Honest ratings out of 10**, with color-coded rings that animate as they fill
+- 🎯 **Honest ratings out of 10**, with a tape-measure style score bar
 - 🧠 **AI that reads your photos**: it finds the true color, the clothing type and the pattern, and crops each photo to the garment
 - 🧥 **Winter ready** with a separate Jackets section
 - 🛍️ **Tells you what to buy** to unlock the most new outfits
