@@ -56,11 +56,10 @@ It works in any modern browser, but it is designed for phones.
 ### 👔 Outfits
 Your daily answer. Pick the occasion (**Casual, Office, Wedding, Eid**) and FitCheck shows your best matches first.
 
-- A large **Today's pick** card with a **Not this one** button, then a clean list of more matches
+- A large **Today's pick** card with a **Show another** button, then a clean list of more matches
 - By default only outfits rated **7 or higher** are shown. Flip **Show outfits below 7** to see the rest
 - **With jacket** adds the best matching jacket to each outfit
 - **♥ Saved** keeps your favorite outfits in one place
-- **Surprise me** opens a random great outfit
 - Filter by one piece to see only outfits that include it
 - Tap any outfit for **large photos**, the rating ring, **shoe colors** (formal shoes, sneakers, sandals/slides), the best jacket, and an optional AI review
 
@@ -80,7 +79,8 @@ Your digital closet, split into **Shirts**, **Pants** and **Jackets**.
 - **Tap the garment** in the photo to pick its exact color
 - Support for **two-color pieces** (striped, checked, color-blocked)
 - A **duplicate warning** if a new photo looks like one you already added
-- **Clean up with AI** to re-scan and crop older photos
+- **Background removal** on every new photo, so each piece sits on a clean tile (works best on a plain wall or floor), plus a **Remove backgrounds** button for older photos with Undo
+- **Jeans washes** (light, mid, dark) and **shirt patterns** (solid, striped, checked, printed) that the rating treats differently
 - **Add by color** to add a piece in seconds with no photo, and a **demo wardrobe** to try the app instantly
 - **Take photos** mode with a quick photo-tips sheet and a "Next photo" button for adding many pieces fast
 - The AI **sorts each photo** into shirts, pants or jackets for you
