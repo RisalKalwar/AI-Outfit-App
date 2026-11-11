@@ -79,7 +79,7 @@ Your digital closet, split into **Shirts**, **Pants** and **Jackets**.
 - **Tap the garment** in the photo to pick its exact color
 - Support for **two-color pieces** (striped, checked, color-blocked)
 - A **duplicate warning** if a new photo looks like one you already added
-- **Background removal** on every new photo, so each piece sits on a clean tile (works best on a plain wall or floor), plus a **Remove backgrounds** button for older photos with Undo
+- Optional **Remove backgrounds (beta)** in Settings puts each piece on a clean tile. It is off by default because it can fail on busy backgrounds. Originals are kept so you can restore them
 - **Jeans washes** (light, mid, dark) and **shirt patterns** (solid, striped, checked, printed) that the rating treats differently
 - **Add by color** to add a piece in seconds with no photo, and a **demo wardrobe** to try the app instantly
 - **Take photos** mode with a quick photo-tips sheet and a "Next photo" button for adding many pieces fast
@@ -162,7 +162,7 @@ Photos, buttons, cards, pop-ups and rating rings have spoken labels for VoiceOve
 
 | Problem | What to do |
 |---|---|
-| App looks old after an update | Fully close it and reopen. If it persists, remove it from the home screen, open the link in Safari and add it again. |
+| App looks old after an update | Open Settings and check the **Version** number. Tap **Reload app**. The app also shows a "New version ready" bar when an update is available. If it never updates, remove it from the home screen, open the link in Safari and add it again. |
 | "Free AI limit reached" | Wait about a minute, then tap **Scan & crop with AI** on that item. Add fewer photos at a time. |
 | "The AI key was not accepted" | Re-copy the key into Settings with no extra spaces. |
 | "AI model name was not found" | Clear the model box in Settings to use the default. |
