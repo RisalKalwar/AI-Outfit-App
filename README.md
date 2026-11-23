@@ -53,6 +53,9 @@ It works in any modern browser, but it is designed for phones.
 
 ## 🧭 A tour of the app
 
+The **Studio** screen shows your outfit as three cards: top, bottom and footwear. Tap a card or its arrows to try the next piece, lock a card to keep it, and tap **Generate Outfit** to reshuffle the rest. A harmony gauge, a short styling note and your color swatches sit below. Switch between three looks at the top: **Prism Glass**, **Kinetic Mono + Pop** and **Velvet Noir**. The **0.5X** button slows every animation down so you can watch it.
+
+
 ### 👔 Outfits
 Your daily answer. Pick the occasion (**Casual, Office, Wedding, Eid**) and FitCheck shows your best matches first.
 
